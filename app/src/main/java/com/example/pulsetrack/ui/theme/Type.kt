@@ -16,6 +16,11 @@ val M3Typography = Typography(
         fontSize = 32.sp,
         lineHeight = 40.sp
     ),
+    headlineMedium = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        lineHeight = 32.sp
+    ),
     titleMedium = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp,
