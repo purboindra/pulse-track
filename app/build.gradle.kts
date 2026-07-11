@@ -2,12 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.koin.compiler)
 }
 
 android {
     namespace = "com.example.pulsetrack"
     compileSdk {
-        version = release(36) {
+        version = release(37) {
             minorApiLevel = 1
         }
     }
@@ -69,6 +70,10 @@ dependencies {
 
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.viewmodel)
+    implementation(libs.koin.core)
+    implementation(libs.koin.annotations)
 
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
