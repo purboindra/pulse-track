@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
 sealed interface Routes {
     data object Splash : Routes
+    data object OnBoarding : Routes
     data object Main : Routes
     data object Run : Routes
     data object History : Routes
