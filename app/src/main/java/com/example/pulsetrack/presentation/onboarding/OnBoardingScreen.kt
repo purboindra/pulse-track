@@ -25,7 +25,9 @@ import com.example.pulsetrack.R
 import com.example.pulsetrack.ui.theme.PulseTrackTheme
 
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(
+    onClick: () -> Unit
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { paddingValues ->
@@ -55,7 +57,7 @@ fun OnBoardingScreen() {
             )
             Spacer(modifier = Modifier.weight(1f))
             ElevatedButton(
-                onClick = {},
+                onClick = onClick,
                 modifier = Modifier
                     .fillMaxWidth(),
                 contentPadding = PaddingValues(PulseTrackTheme.spacing.md),
