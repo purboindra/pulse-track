@@ -56,6 +56,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation(libs.material.icons.extended)
+    implementation(libs.androidx.compose.foundation.layout)
 
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
