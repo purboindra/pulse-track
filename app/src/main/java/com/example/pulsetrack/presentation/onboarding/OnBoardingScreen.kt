@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.pulsetrack.R
+import com.example.pulsetrack.presentation.component.AppButton
 import com.example.pulsetrack.ui.theme.PulseTrackTheme
 
 @Composable
@@ -56,22 +57,10 @@ fun OnBoardingScreen(
                 modifier = Modifier.size(424.dp),
             )
             Spacer(modifier = Modifier.weight(1f))
-            ElevatedButton(
+            AppButton(
                 onClick = onClick,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(PulseTrackTheme.spacing.md),
-                colors = ButtonDefaults.elevatedButtonColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                ),
-            ) {
-                Text(
-                    "Start Running",
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        color = MaterialTheme.colorScheme.surface
-                    )
-                )
-            }
+                label = "Start Running"
+            )
         }
     }
 }
