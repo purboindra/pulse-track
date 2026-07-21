@@ -1,6 +1,7 @@
 package com.example.pulsetrack.presentation.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -63,6 +64,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         }
         item {
             WeeklyProgress(modifier = modifier.fillMaxWidth())
+        }
+        item {
+            RecentRun(
+                modifier = modifier.fillMaxWidth()
+            )
         }
     }
 }
