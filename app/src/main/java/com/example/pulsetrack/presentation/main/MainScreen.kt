@@ -40,6 +40,7 @@ import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
 import com.example.pulsetrack.core.navigation.BottomNavbar
 import com.example.pulsetrack.presentation.component.AppBar
+import com.example.pulsetrack.presentation.history.HistoryScreen
 import com.example.pulsetrack.presentation.home.HomeScreen
 import kotlinx.coroutines.launch
 import kotlin.collections.mutableSetOf
@@ -128,7 +129,7 @@ fun MainScreen() {
 
 
                     is BottomNavbar.History -> NavEntry(key) {
-                        Text("History Screen")
+                        HistoryScreen(modifier = Modifier.fillMaxSize())
                     }
 
 
