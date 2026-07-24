@@ -117,14 +117,12 @@ fun HistoryScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.padding(
             PulseTrackTheme.spacing.md
-        ), verticalArrangement = Arrangement.spacedBy(
-            PulseTrackTheme.spacing.lg
-        )
+        ),
     ) {
         Box(
             modifier = Modifier
                 .height(32.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         ) {
             LazyRow(
                 modifier = Modifier.fillMaxHeight(),
@@ -170,7 +168,6 @@ fun HistoryScreen(modifier: Modifier = Modifier) {
             }
         }
         Spacer(modifier = Modifier.height(PulseTrackTheme.spacing.base))
-
         LazyColumn(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(PulseTrackTheme.spacing.sm)
