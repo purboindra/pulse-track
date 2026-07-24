@@ -42,6 +42,7 @@ import com.example.pulsetrack.core.navigation.BottomNavbar
 import com.example.pulsetrack.presentation.component.AppBar
 import com.example.pulsetrack.presentation.history.HistoryScreen
 import com.example.pulsetrack.presentation.home.HomeScreen
+import com.example.pulsetrack.presentation.statistic.StatisticScreen
 import kotlinx.coroutines.launch
 import kotlin.collections.mutableSetOf
 
@@ -134,7 +135,7 @@ fun MainScreen() {
 
 
                     is BottomNavbar.Stats -> NavEntry(key) {
-                        Text("Stats Screen")
+                        StatisticScreen(modifier = Modifier.fillMaxSize())
                     }
                 }
             }
