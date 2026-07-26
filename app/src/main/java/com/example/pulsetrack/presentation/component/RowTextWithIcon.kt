@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.example.pulsetrack.ui.theme.PulseTrackTheme
 
+
 @Composable
 fun RowTextWithIcon(
     icon: ImageVector,
