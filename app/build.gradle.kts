@@ -85,7 +85,7 @@ dependencies {
     implementation(libs.androidx.material3.adaptive.navigation3)
     implementation(libs.kotlinx.serialization.core)
 
-
+    implementation(libs.osmdroid.android)
 
     ksp(libs.room.compiler)
 }
