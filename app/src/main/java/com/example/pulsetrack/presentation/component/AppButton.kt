@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import com.example.pulsetrack.ui.theme.PulseTrackTheme
 
 @Composable
@@ -15,12 +16,14 @@ fun AppButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
     enabled: Boolean = true,
-    label: String
+    label: String,
+    shape: Shape = ButtonDefaults.elevatedShape
 ) {
     ElevatedButton(
         enabled = enabled,
         onClick = onClick,
-        modifier = Modifier
+        shape = shape,
+        modifier = modifier
             .fillMaxWidth(),
         contentPadding = PaddingValues(PulseTrackTheme.spacing.md),
         colors = ButtonDefaults.elevatedButtonColors(
