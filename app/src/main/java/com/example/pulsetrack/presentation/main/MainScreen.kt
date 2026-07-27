@@ -30,6 +30,7 @@ import com.example.pulsetrack.presentation.component.AppBar
 import com.example.pulsetrack.presentation.history.HistoryScreen
 import com.example.pulsetrack.presentation.home.HomeScreen
 import com.example.pulsetrack.presentation.profile.ProfileScreen
+import com.example.pulsetrack.presentation.run.RunScreen
 import com.example.pulsetrack.presentation.statistic.StatisticScreen
 
 
@@ -107,7 +108,7 @@ fun MainScreen() {
                     }
 
                     is BottomNavbar.Run -> NavEntry(key) {
-                        Text("Run Screen")
+                        RunScreen(modifier = Modifier.fillMaxSize())
                     }
 
                     is BottomNavbar.Profile -> NavEntry(key) {
