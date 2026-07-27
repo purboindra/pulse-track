@@ -45,7 +45,7 @@ fun UserAvatar() {
                     )
                     .background(MaterialTheme.colorScheme.background)
                     .padding(
-                        PulseTrackTheme.spacing.sm
+                        PulseTrackTheme.spacing.xs
                     ),
             ) {
                 AsyncImage(
