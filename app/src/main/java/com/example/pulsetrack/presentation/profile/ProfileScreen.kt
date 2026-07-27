@@ -38,14 +38,9 @@ import androidx.compose.ui.unit.sp
 import com.example.pulsetrack.ui.theme.PulseTrackTheme
 import com.example.pulsetrack.ui.theme.PureWhite
 
-private val kmUnits = listOf("KM", "MI")
 
 @Composable
 fun ProfileScreen(modifier: Modifier = Modifier) {
-
-    var unit by remember { mutableStateOf(kmUnits.first()) }
-    var allowNotification by remember { mutableStateOf(false) }
-
     LazyColumn(
         modifier = modifier
             .padding(
@@ -64,91 +59,20 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
             }
         }
         item {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = PulseTrackTheme.spacing.xl),
-                verticalArrangement = Arrangement.spacedBy(PulseTrackTheme.spacing.base)
-            ) {
-                CardSetting(
-                    label = "RUNNING GOAL",
-                    value = "30 km per week",
-                    backgroundIconColor = MaterialTheme.colorScheme.primary,
-                    icon = Icons.Default.Radar,
-                    iconColor = MaterialTheme.colorScheme.primaryContainer
-                )
-                CardSetting(
-                    label = "UNIT",
-                    value = "Kilometers",
-                    backgroundIconColor = Color(0xffDBE1FF),
-                    icon = Icons.Default.HorizontalRule,
-                    iconColor = Color(0xff003EA8),
-                    rightCompose = {
-                        Box(
-                            modifier = Modifier
-                                .height(32.dp)
-                                .width(88.dp)
-                                .clip(RoundedCornerShape(PulseTrackTheme.spacing.xs))
-                                .background(
-                                    Color(0xffEDEEEF)
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Row(
-                                modifier = Modifier.fillMaxSize(),
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                kmUnits.forEach { item ->
-                                    KilometerUnit(
-                                        label = item,
-                                        isActive = unit == item,
-                                        onClick = {
-                                            unit = item
-                                        }
-                                    )
-                                }
-                            }
-                        }
-                    }
-                )
-                CardSetting(
-                    label = "NOTIFICATIONS",
-                    value = "On",
-                    backgroundIconColor = Color(0xffFFDAD7),
-                    icon = Icons.Default.Radar,
-                    iconColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                    rightCompose = {
-                        Switch(
-                            colors = SwitchDefaults.colors(
-                                checkedThumbColor = PureWhite,
-                                uncheckedBorderColor = Color.Transparent,
-                                checkedBorderColor = Color.Transparent,
-
-                                ),
-                            checked = allowNotification,
-                            onCheckedChange = { value -> allowNotification = value }
-                        )
-                    }
-                )
-                CardSetting(
-                    label = "CONNECTED APPS",
-                    value = "Google Fit",
-                    backgroundIconColor = MaterialTheme.colorScheme.surfaceVariant,
-                    icon = Icons.Default.Apps,
-                    iconColor = MaterialTheme.colorScheme.onBackground
-                )
-                CardSetting(
-                    label = "SYSTEM",
-                    value = "About PulseTrack",
-                    backgroundIconColor = MaterialTheme.colorScheme.surfaceVariant,
-                    icon = Icons.Outlined.Info,
-                    iconColor = MaterialTheme.colorScheme.onBackground
-                )
-            }
+            ProfileSettings()
         }
         item {
-            TextButton(onClick = {}) {
-                Text("Sign Out")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                TextButton(onClick = {}) {
+                    Text(
+                        "Sign Out", style = MaterialTheme.typography.bodyLarge.copy(
+                            color = MaterialTheme.colorScheme.tertiary
+                        )
+                    )
+                }
             }
         }
     }
