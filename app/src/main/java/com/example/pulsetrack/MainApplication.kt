@@ -11,7 +11,7 @@ class MainApplication : Application() {
         super.onCreate()
 
         Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this))
-        Configuration.getInstance().userAgentValue = "PulseTrackApp/1.0 (com.example.pulsetrack)"
+//        Configuration.getInstance().userAgentValue = "PulseTrackApp/1.0 (com.example.pulsetrack)"
 
         startKoin {
             modules(

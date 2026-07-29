@@ -86,6 +86,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.core)
 
     implementation(libs.osmdroid.android)
+    implementation(libs.play.services.location)
 
     ksp(libs.room.compiler)
 }

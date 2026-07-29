@@ -36,6 +36,8 @@ import com.example.pulsetrack.ui.theme.PulseTrackTheme
 @Composable
 
 fun RunScreen(modifier: Modifier = Modifier) {
+
+
   
     Column(
         modifier = modifier.padding(
