@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -41,14 +42,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.core.content.PackageManagerCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.pulsetrack.core.helpers.DurationHelper
 import com.example.pulsetrack.presentation.component.AppButton
 import com.example.pulsetrack.presentation.component.OsmMapView
 import com.example.pulsetrack.ui.theme.PulseTrackTheme
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalGridApi::class)
 @Composable
 
-fun RunScreen(modifier: Modifier = Modifier) {
+fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewModel()) {
+
+    val runState by viewModel.runState.collectAsStateWithLifecycle()
+    val formattedDuration = remember(runState.durationSeconds) {
+        DurationHelper.formatSecondsToTime(runState.durationSeconds)
+    }
 
     val context = LocalContext.current
     var hasLocationPermission by remember {
@@ -106,7 +115,7 @@ fun RunScreen(modifier: Modifier = Modifier) {
                     )
                     Spacer(modifier = Modifier.height(PulseTrackTheme.spacing.xs))
                     Text(
-                        "00:45:14", style = MaterialTheme.typography.headlineLarge.copy(
+                        formattedDuration, style = MaterialTheme.typography.headlineLarge.copy(
                             fontSize = 48.sp,
                         )
                     )
@@ -125,7 +134,7 @@ fun RunScreen(modifier: Modifier = Modifier) {
                 ) {
                     StatusRunCard(
                         label = "DISTANCE",
-                        value = "8.2",
+                        value ="${runState.distanceMeters}",
                         unit = "km"
                     )
                     StatusRunCard(
@@ -149,7 +158,9 @@ fun RunScreen(modifier: Modifier = Modifier) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     AppButton(
-                        onClick = {}, label = "PAUSE", modifier = Modifier
+                        onClick = viewModel::onStartRunClicked,
+                        label = if (runState.isTracking) "PAUSE" else "START",
+                        modifier = Modifier
                             .weight(1f)
                             .height(72.dp),
                         shape = RoundedCornerShape(PulseTrackTheme.spacing.base)
@@ -170,12 +181,12 @@ fun RunScreen(modifier: Modifier = Modifier) {
                                 Color(0xffFFB3AD)
                             )
                             .clickable(
-                                onClick = {}
+                                onClick = viewModel::onStopRunClicked
                             ),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            Icons.Default.Pause,
+                            if (runState.isPaused) Icons.Default.Pause else Icons.Default.PlayArrow,
                             contentDescription = "",
                             tint = MaterialTheme.colorScheme.onTertiaryContainer
                         )
