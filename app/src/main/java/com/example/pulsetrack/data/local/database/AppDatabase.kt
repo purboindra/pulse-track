@@ -5,9 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.pulsetrack.data.local.entity.RunEntity
-import org.koin.core.annotation.Singleton
 
-@Singleton
 @Database(
     entities = [RunEntity::class],
     version = 1,
