@@ -3,6 +3,7 @@ package com.example.pulsetrack.presentation.run
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pulsetrack.core.helpers.DurationHelper
 import com.example.pulsetrack.presentation.state.RunState
 import com.example.pulsetrack.service.RunningServiceController
 import com.example.pulsetrack.service.RunningTrackingService
@@ -114,6 +115,15 @@ class RunViewModel(
         return String.format("%d:%02d", minutes, seconds)
     }
 
+    val formattedDuration: StateFlow<String> =
+        RunningTrackingService.durationSeconds.map { seconds ->
+            DurationHelper.formatDuration(seconds)
+        }.stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            "00:00"
+        )
+
     fun onStartRunClicked() {
         runningServiceController.startTracking()
         _runState.update {
@@ -123,11 +133,20 @@ class RunViewModel(
         }
     }
 
+    fun onPauseRunClicked() {
+        runningServiceController.pauseTracking()
+        _runState.update {
+            it.copy(
+                isPaused = true,
+                isTracking = false
+            )
+        }
+    }
+
     fun onStopRunClicked() {
         runningServiceController.stopTracking()
         _runState.update {
             it.copy(
-                isPaused = true,
                 isTracking = false
             )
         }
