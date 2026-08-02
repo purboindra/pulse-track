@@ -55,6 +55,11 @@ import org.koin.androidx.compose.koinViewModel
 fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewModel()) {
 
     val runState by viewModel.runState.collectAsStateWithLifecycle()
+    val distance by viewModel.formattedDistanceInKm.collectAsStateWithLifecycle()
+    val pace by viewModel.currentPace.collectAsStateWithLifecycle()
+    val avgPace by viewModel.avgPace.collectAsStateWithLifecycle()
+    val caloriesBurned by viewModel.caloriesBurnedGoal.collectAsStateWithLifecycle()
+
     val formattedDuration = remember(runState.durationSeconds) {
         DurationHelper.formatSecondsToTime(runState.durationSeconds)
     }
@@ -134,22 +139,22 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
                 ) {
                     StatusRunCard(
                         label = "DISTANCE",
-                        value ="${runState.distanceMeters}",
+                        value = distance,
                         unit = "km"
                     )
                     StatusRunCard(
                         label = "PACE",
-                        value = "5:32",
+                        value = pace,
                         unit = "/km"
                     )
                     StatusRunCard(
                         label = "AVG PACE",
-                        value = "5:40",
+                        value = avgPace,
                         unit = "/km"
                     )
                     StatusRunCard(
                         label = "CALORIES",
-                        value = "450",
+                        value = "$caloriesBurned",
                         unit = "kcal"
                     )
                 }
@@ -158,7 +163,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     AppButton(
-                        onClick = viewModel::onStartRunClicked,
+                        onClick = if (runState.isTracking) viewModel::onStopRunClicked else viewModel::onStartRunClicked,
                         label = if (runState.isTracking) "PAUSE" else "START",
                         modifier = Modifier
                             .weight(1f)
