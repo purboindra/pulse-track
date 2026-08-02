@@ -15,6 +15,13 @@ class RunningServiceController(private val context: Context) {
         }
     }
 
+    fun pauseTracking() {
+        Intent(context, RunningTrackingService::class.java).also { intent ->
+            intent.action = RunningTrackingService.ACTION_PAUSE
+            context.startService(intent)
+        }
+    }
+
     fun stopTracking() {
         Intent(context, RunningTrackingService::class.java).also { intent ->
             intent.action = RunningTrackingService.ACTION_STOP
