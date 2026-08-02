@@ -70,6 +70,7 @@ class RunningTrackingService : Service() {
         }
     }
 
+
     private fun pauseTimer() {
         isTimerRunning = false
         timeAccruedBeforePauseMillis += System.currentTimeMillis() - startTimeMillis
@@ -84,6 +85,7 @@ class RunningTrackingService : Service() {
         when (intent?.action) {
             ACTION_START -> {
                 startTracking()
+                startTimer()
             }
             ACTION_PAUSE -> {
                 pauseTracking()
