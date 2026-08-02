@@ -183,7 +183,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
                                 Color(0xffFFB3AD)
                             )
                             .clickable(
-                                onClick = viewModel::onStopRunClicked
+                                onClick = viewModel::onPauseRunClicked
                             ),
                         contentAlignment = Alignment.Center
                     ) {
