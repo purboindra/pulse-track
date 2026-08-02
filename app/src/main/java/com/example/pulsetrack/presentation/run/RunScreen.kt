@@ -161,7 +161,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
                 ) {
                     AppButton(
                         onClick = if (runState.isTracking) viewModel::onStopRunClicked else viewModel::onStartRunClicked,
-                        label = if (runState.isTracking) "PAUSE" else "START",
+                        label = if (runState.isTracking) "STOP" else "START",
                         modifier = Modifier
                             .weight(1f)
                             .height(72.dp),
