@@ -59,10 +59,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
     val pace by viewModel.currentPace.collectAsStateWithLifecycle()
     val avgPace by viewModel.avgPace.collectAsStateWithLifecycle()
     val caloriesBurned by viewModel.caloriesBurnedGoal.collectAsStateWithLifecycle()
-
-    val formattedDuration = remember(runState.durationSeconds) {
-        DurationHelper.formatSecondsToTime(runState.durationSeconds)
-    }
+    val durationText by viewModel.formattedDuration.collectAsStateWithLifecycle()
 
     val context = LocalContext.current
     var hasLocationPermission by remember {
@@ -120,7 +117,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
                     )
                     Spacer(modifier = Modifier.height(PulseTrackTheme.spacing.xs))
                     Text(
-                        formattedDuration, style = MaterialTheme.typography.headlineLarge.copy(
+                        durationText, style = MaterialTheme.typography.headlineLarge.copy(
                             fontSize = 48.sp,
                         )
                     )
