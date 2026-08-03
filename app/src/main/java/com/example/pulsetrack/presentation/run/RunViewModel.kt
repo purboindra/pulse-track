@@ -147,6 +147,7 @@ class RunViewModel(
         runningServiceController.stopTracking()
         _runState.update {
             it.copy(
+                isPaused = false,
                 isTracking = false
             )
         }
