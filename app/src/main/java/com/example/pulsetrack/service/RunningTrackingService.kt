@@ -55,6 +55,10 @@ class RunningTrackingService : Service() {
     private var timeAccruedBeforePauseMillis = 0L
 
     private fun startTimer() {
+        // Reset duration
+        _durationSeconds.update {
+            0
+        }
         isTimerRunning = true
         startTimeMillis = System.currentTimeMillis()
         serviceScope.launch {
@@ -87,9 +91,11 @@ class RunningTrackingService : Service() {
                 startTracking()
                 startTimer()
             }
+
             ACTION_PAUSE -> {
                 pauseTracking()
             }
+
             ACTION_STOP -> {
                 stopTracking()
             }
