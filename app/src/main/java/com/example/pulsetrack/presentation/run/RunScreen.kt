@@ -161,7 +161,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
                 ) {
                     AppButton(
                         onClick = if (runState.isTracking) viewModel::onStopRunClicked else viewModel::onStartRunClicked,
-                        label = if (runState.isTracking) "STOP" else "START",
+                        label = if (runState.isTracking || runState.isPaused) "STOP" else "START",
                         modifier = Modifier
                             .weight(1f)
                             .height(72.dp),
@@ -188,7 +188,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            if (runState.isPaused) Icons.Default.Pause else Icons.Default.PlayArrow,
+                            if (runState.isTracking) Icons.Default.Pause else Icons.Default.PlayArrow,
                             contentDescription = "",
                             tint = MaterialTheme.colorScheme.onTertiaryContainer
                         )
