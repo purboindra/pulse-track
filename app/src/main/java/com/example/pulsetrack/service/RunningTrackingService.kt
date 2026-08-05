@@ -23,7 +23,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.koin.android.scope.serviceScope
 import org.osmdroid.util.GeoPoint
 import kotlin.time.Duration.Companion.milliseconds
 

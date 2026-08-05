@@ -10,6 +10,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import org.osmdroid.config.Configuration
+import org.osmdroid.library.BuildConfig
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
@@ -19,13 +20,13 @@ fun OsmMapView(
     modifier: Modifier = Modifier,
     centerPoint: GeoPoint = GeoPoint(-6.2088, 106.8456),
     zoomLevel: Double = 16.0,
-    onMapReady: ((MapView) -> Unit)? = null
+    onMapReady: ((MapView) -> Unit)? = null,
+    hasLocationPermission: Boolean = false,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
 
     val mapView = remember {
-        Configuration.getInstance().userAgentValue = context.packageName
         MapView(context).apply {
             setTileSource(TileSourceFactory.MAPNIK)
             setMultiTouchControls(true)
@@ -49,7 +50,7 @@ fun OsmMapView(
         }
     }
 
-    AndroidView(
+    if (hasLocationPermission) AndroidView(
         factory = { mapView },
         modifier = modifier,
         update = { map ->

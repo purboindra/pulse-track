@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
@@ -95,6 +96,7 @@ fun RunScreen(modifier: Modifier = Modifier, viewModel: RunViewModel = koinViewM
         ),
     ) {
         OsmMapView(
+            hasLocationPermission = hasLocationPermission,
             modifier = Modifier
                 .height(240.dp)
                 .fillMaxWidth()

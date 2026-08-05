@@ -1,6 +1,7 @@
 package com.example.pulsetrack.presentation.run
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pulsetrack.core.helpers.DurationHelper
@@ -16,6 +17,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import org.osmdroid.util.GeoPoint
+
+
+private const val TAG = "RunViewModel"
 
 class RunViewModel(
     private val runningServiceController: RunningServiceController
@@ -62,7 +66,9 @@ class RunViewModel(
         var totalMeters = 0.0
         for (i in 0 until points.size - 1) {
             val p1 = points[i]
+            Log.d(TAG, "[calculateDistanceInMeters] p1: $p1")
             val p2 = points[i + 1]
+            Log.d(TAG, "[calculateDistanceInMeters] p2: $p2")
             totalMeters += p1.distanceToAsDouble(p2)
         }
         return totalMeters
