@@ -65,8 +65,6 @@ dependencies {
     implementation(libs.ktor.client.content.negotiation)
 
     implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    implementation(libs.room.paging)
 
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.android)

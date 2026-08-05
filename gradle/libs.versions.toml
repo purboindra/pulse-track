@@ -10,7 +10,7 @@ kotlin = "2.4.0"
 composeBom = "2026.02.01"
 compose = "1.12.0-beta02"
 ktor = "3.5.1"
-room = "2.8.4"
+room = "3.0.1"
 koin = "4.2.2"
 koin-plugin = "1.0.1"
 coil3 = "3.5.0"
@@ -50,10 +50,10 @@ ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "k
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 
 # ROOM
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+room-runtime = { module = "androidx.room3:room3-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room3:room3-compiler", version.ref = "room" }
+#room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+#room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
 
 # KOIN
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }

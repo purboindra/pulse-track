@@ -1,15 +1,17 @@
 package com.example.pulsetrack.data.local.entity
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room3.Entity
+import androidx.room3.PrimaryKey
 
 @Entity(tableName = "runs")
 data class RunEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val timestamp: Long = 0L, 
-    val avgSpeedInKMH: Float = 0f,
+    val startTimeMillis: Long,
+    val endTimeMillis: Long,
+    val timestamp: Long = 0L,
+    val avgPace: Float = 0f,
     val distanceInMeters: Int = 0,
-    val timeInMillis: Long = 0L,
+    val pace: Long = 0L,
     val caloriesBurned: Int = 0
 )
