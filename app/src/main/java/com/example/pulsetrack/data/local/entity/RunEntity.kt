@@ -3,7 +3,7 @@ package com.example.pulsetrack.data.local.entity
 import androidx.room3.Entity
 import androidx.room3.PrimaryKey
 
-@Entity(tableName = "runs")
+@Entity(tableName = "run")
 data class RunEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
