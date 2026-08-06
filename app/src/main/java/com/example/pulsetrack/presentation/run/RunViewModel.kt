@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pulsetrack.core.helpers.DurationHelper
+import com.example.pulsetrack.data.local.database.RunDao
 import com.example.pulsetrack.presentation.state.RunState
 import com.example.pulsetrack.service.RunningServiceController
 import com.example.pulsetrack.service.RunningTrackingService
@@ -22,7 +23,8 @@ import org.osmdroid.util.GeoPoint
 private const val TAG = "RunViewModel"
 
 class RunViewModel(
-    private val runningServiceController: RunningServiceController
+    private val runningServiceController: RunningServiceController,
+    private val runDao: RunDao
 ) : ViewModel() {
     val pathPoints: StateFlow<List<GeoPoint>> = RunningTrackingService.pathPoints
 
@@ -45,7 +47,7 @@ class RunViewModel(
 
     val caloriesBurnedGoal: StateFlow<Int> = distanceInMeters.map { meters ->
         val distanceInKm = meters / 1000.0
-        val calories = userWeight * distanceInKm * 1036
+        val calories = userWeight * distanceInKm * 1.036
         calories.toInt()
     }.stateIn(
         viewModelScope,

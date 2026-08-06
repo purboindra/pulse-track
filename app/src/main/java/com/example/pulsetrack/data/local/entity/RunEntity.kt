@@ -7,8 +7,8 @@ import androidx.room3.PrimaryKey
 data class RunEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val startTimeMillis: Long,
-    val endTimeMillis: Long,
+    val startTimeMillis: Long = 0L,
+    val endTimeMillis: Long = 0L,
     val timestamp: Long = 0L,
     val avgPace: Float = 0f,
     val distanceInMeters: Int = 0,
